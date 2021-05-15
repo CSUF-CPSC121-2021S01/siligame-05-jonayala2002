@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
-#include <vector>
 #include <memory>
+#include <vector>
 #include "cpputils/graphics/image.h"
 #include "cpputils/graphics/image_event.h"
 #include "game_element.h"
@@ -16,8 +16,8 @@ class Game : public graphics::AnimationEventListener,
       : GameScreen(width, height), width_(width), height_(height) {}
 
   graphics::Image &GetGameScreen() { return GameScreen; }
-  int GetScore() const{return score_;}
-  bool HasLost() const{return active_;}
+  int GetScore() const { return score_; }
+  bool HasLost() const { return active_; }
   std::vector<std::unique_ptr<Opponent>> &GetOpponents() { return Opponents; }
   std::vector<std::unique_ptr<OpponentProjectile>> &GetOpponentProjectiles() {
     return OpponentProjectiles;
@@ -27,10 +27,10 @@ class Game : public graphics::AnimationEventListener,
   }
   Player &GetPlayer() { return player_; }
   void CreateOpponents() {
-  for (int i = 0; i < 1; i++) {
-    Opponents.push_back(std::make_unique<Opponent>(100 * i + 15, 100));
+    for (int i = 0; i < 1; i++) {
+      Opponents.push_back(std::make_unique<Opponent>(100 * i + 15, 100));
+    }
   }
-}
   void Init();
   void UpdateScreen();
   void Start();

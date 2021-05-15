@@ -7,7 +7,7 @@ void GameElement::Draw(graphics::Image &image) {
   image.DrawRectangle(GetX(), GetY(), 5, 5, black);
 }
 
-bool GameElement::IntersectsWith(GameElement* gameelement) {
+bool GameElement::IntersectsWith(GameElement *gameelement) {
   int x = gameelement->GetX();
   int y = gameelement->GetY();
   int width = gameelement->GetWidth();

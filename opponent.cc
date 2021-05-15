@@ -42,14 +42,14 @@ void Opponent::Move(const graphics::Image &image) {
   }
 }
 
-std::unique_ptr<class OpponentProjectile> Opponent::LaunchProjectile(){
-  if(rate >= 10){
+std::unique_ptr<class OpponentProjectile> Opponent::LaunchProjectile() {
+  if (rate >= 10) {
     rate = 0;
     std::unique_ptr<OpponentProjectile> brain;
     brain = std::make_unique<OpponentProjectile>();
     return std::move(brain);
   } else {
     rate++;
-    return nullptr; 
+    return nullptr;
   }
 }

@@ -11,8 +11,9 @@ void Game::Init() {
 
 void Game::UpdateScreen() {
   GameScreen.DrawRectangle(0, 0, 800, 600, 255, 255, 255);
-  GameScreen.DrawText(0, 0, "Score: " + std::to_string(GetScore()), 30, graphics::Color(0, 0, 0));
-  
+  GameScreen.DrawText(0, 0, "Score: " + std::to_string(GetScore()), 30,
+                      graphics::Color(0, 0, 0));
+
   for (int a = 0; a < Opponents.size(); a++) {
     if (Opponents[a]->GetIsActive()) {
       Opponents[a]->Draw(GetGameScreen());
@@ -56,7 +57,7 @@ void Game::MoveGameElements() {
 }
 
 void Game::OnAnimationStep() {
-  if(Opponents.size() == 0){
+  if (Opponents.size() == 0) {
     CreateOpponents();
   }
   MoveGameElements();
@@ -67,18 +68,19 @@ void Game::OnAnimationStep() {
   GameScreen.Flush();
 }
 
-void Game::OnMouseEvent(const graphics::MouseEvent& event) {  
-  if(event.GetMouseAction() == graphics::MouseAction::kMoved || event.GetMouseAction() == graphics::MouseAction::kDragged){    
-    int new_x = event.GetX() - player_.GetWidth() / 2;    
-    int new_y = event.GetY() - player_.GetHeight() / 2;    
-    int old_x = player_.GetX();    
-    int old_y = player_.GetY();    
-    player_.SetX(new_x);    
-    player_.SetY(new_y);    
+void Game::OnMouseEvent(const graphics::MouseEvent &event) {
+  if (event.GetMouseAction() == graphics::MouseAction::kMoved ||
+      event.GetMouseAction() == graphics::MouseAction::kDragged) {
+    int new_x = event.GetX() - player_.GetWidth() / 2;
+    int new_y = event.GetY() - player_.GetHeight() / 2;
+    int old_x = player_.GetX();
+    int old_y = player_.GetY();
+    player_.SetX(new_x);
+    player_.SetY(new_y);
     if (player_.IsOutOfBounds(GameScreen)) {
-      player_.SetX(old_x);      
-      player_.SetY(old_y); 
-    }  
+      player_.SetX(old_x);
+      player_.SetY(old_y);
+    }
   }
   if (event.GetMouseAction() == graphics::MouseAction::kPressed) {
     std::unique_ptr<PlayerProjectile> brain =
